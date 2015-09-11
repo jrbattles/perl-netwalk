@@ -1,4 +1,4 @@
 # perl-netwalk
-Uses snmpwalk to gather ARP databases from your devices and creates reports based on vendor.
+Uses snmpwalk to gather ARP databases from your network devices and creates reports based on vendor MAC addresses.  Output report is generated as HTML.
 
-this is a test change.
+
