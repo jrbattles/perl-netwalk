@@ -12,7 +12,7 @@ $currdate = `date`;
 if ($debug) {print"==>\$WORDIR: $WORKDIR\n==> arpscan.pl executed at $currdate\n\n";}
 
 ####	OPEN FILEHANDLES, ONE FOR OUTPUT AND ONE FOR OUTPUT
-open (RTRLIST, "$WORKDIR/routerlist") || die "Unable to open input file!\n";
+open (RTRLIST, "$WORKDIR/routerlist.txt") || die "Unable to open input file!\n";
 open (RAW, ">$WORKDIR/rawoutput") || die "Unable to open raw output file!\n";
 
 while (<RTRLIST>) {				##  GRAP THE ARP TABLE FROM EACH ROUTER AND SEND TO RAW OUTPUT
