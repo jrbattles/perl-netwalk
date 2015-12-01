@@ -2,7 +2,7 @@
 
 #######CONTROL PARAMETERS ############################
 $debug = 1;                               ### turn debug controls on(1) or off(0)
-$WORKDIR = "/home/bat/apps";	       	  ### desired location for "rawoutput" and "index.html"
+$WORKDIR = "/home/bat/apps";	       	    ### desired location for "rawoutput" and "index.html"
 $SNMPWALKPATH = "/usr/bin/ucd-snmp/bin";  ### path to ucd-snmp implementation of snmpwalk
 $FINALWWW = "/var/www/html/arpscan";      ### path to final destination for arpscan.pl web report
 
@@ -54,7 +54,7 @@ print (HTML "<body BGCOLOR=\"#FFFFFF\" TEXT=\"#000000\" LINK=\"#003399\" VLINK=\
     <td width=\"161\" valign=\"top\"><p align=\"left\">
     <img border=\"0\" src=\"\/icons\/NetworkServicesLogo.jpg\" width=\"150\" height=\"49\"><\/td>
     <td width=\"639\" valign=\"bottom\" align=\"right\"><b>
-    <font face=\"ARIAL, HELVETICA\" size=\"4\">Network Services - Network Device 
+    <font face=\"ARIAL, HELVETICA\" size=\"4\">Network Services - Network Device
     Type Scanner<\/font><\/b><\/td>
   <\/tr>
   <tr>
@@ -65,7 +65,7 @@ print (HTML "<body BGCOLOR=\"#FFFFFF\" TEXT=\"#000000\" LINK=\"#003399\" VLINK=\
     <td width=\"800\" valign=\"top\" bgcolor=\"#FFFFFF\" height=\"15\" colspan=\"2\">
     <p><\/p>
     <p><\/p>
-    <p><i><font size=\"2\">Last remote arp scan performed - $currdate 
+    <p><i><font size=\"2\">Last remote arp scan performed - $currdate
  <\/font><\/i><\/p>
     <p><font size=\"2\" color=\"#FF0000\">Red font with yellow background indicates unknown or unapproved network device.<\/font><\/p>
     <table border=\"1\" cellpadding=\"0\" cellspacing=\"0\" width=\"799\" id=\"AutoNumber1\" style=\"border-left-style: none; border-right: .75pt solid navy; border-top: .75pt solid navy; border-bottom: .75pt solid navy; background-color: white\" fpstyle=\"23,011111100\">
@@ -103,7 +103,7 @@ while (<RAW2>) {
         <td width=\"309\" style=\"font-weight: normal; color: black; border-left: .75pt solid navy; border-right-style: none; border-top-style: none; border-bottom: .75pt solid navy; background-color: white\">
         <font size=\"1\">&nbsp;<\/font><\/td>
       <\/tr>");
-   } else { 
+   } else {
       ($left,$right) = split(/=/);
       $left =~ s/at.atTable.atEntry.atPhysAddress.2.1.//g;
       $left =~ s/at.atTable.atEntry.atPhysAddress.3.1.//g;
@@ -121,20 +121,20 @@ while (<RAW2>) {
       chop($dnsname);							# Remove the trailing dot
 
       if ($debug) {print "\t\t$left\t$right\t$dnsname\t$finalvendor\n";}
-      
-      ####  DETERMINE IF VENDOR IS APPROVED OR NOT 
-      SWITCH: { 
-         if ($finalvendor =~ /^cisco s/i) {$approve = 1; last SWITCH;} 
-         if ($finalvendor =~ /^cisco /i) {$approve = 1; last SWITCH;} 
-         if ($finalvendor =~ /^hewlett/i) {$approve = 1; last SWITCH;} 
-         if ($finalvendor =~ /^american power/i) {$approve = 1; last SWITCH;} 
-         if ($finalvendor =~ /^zebra tech/i) {$approve = 1; last SWITCH;} 
-         if ($finalvendor =~ /^agere/i) {$approve = 1; last SWITCH;} 
-         if ($finalvendor =~ /^intermec/i) {$approve = 1; last SWITCH;} 
-         if ($finalvendor =~ /^compaq/i) {$approve = 1; last SWITCH;} 
+
+      ####  DETERMINE IF VENDOR IS APPROVED OR NOT
+      SWITCH: {
+         if ($finalvendor =~ /^cisco s/i) {$approve = 1; last SWITCH;}
+         if ($finalvendor =~ /^cisco /i) {$approve = 1; last SWITCH;}
+         if ($finalvendor =~ /^hewlett/i) {$approve = 1; last SWITCH;}
+         if ($finalvendor =~ /^american power/i) {$approve = 1; last SWITCH;}
+         if ($finalvendor =~ /^zebra tech/i) {$approve = 1; last SWITCH;}
+         if ($finalvendor =~ /^agere/i) {$approve = 1; last SWITCH;}
+         if ($finalvendor =~ /^intermec/i) {$approve = 1; last SWITCH;}
+         if ($finalvendor =~ /^compaq/i) {$approve = 1; last SWITCH;}
          $approve = 0;
       }
-         
+
 
       #### Print the device information row
       if ($approve) {
