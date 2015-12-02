@@ -15,7 +15,7 @@ if ($debug) {print"==>\$WORDIR: $WORKDIR\n==> arpscan.pl executed at $currdate\n
 open (RTRLIST, "$WORKDIR/routerlist.txt") || die "Unable to open input file!\n";
 open (RAW, ">$WORKDIR/rawoutput") || die "Unable to open raw output file!\n";
 
-while (<RTRLIST>) {				##  GRAP THE ARP TABLE FROM EACH ROUTER AND SEND TO RAW OUTPUT
+while (<RTRLIST>) {				##  GRAB THE ARP TABLE FROM EACH ROUTER AND SEND TO RAW OUTPUT
    chomp;
    ($site,$ipaddr) = split(/,/);
    if ($debug) {print "Initiating arp scan at site $site using router ip address $ipaddr\n";}
